@@ -24,7 +24,8 @@
 	const manager = new Hammer.Manager(scene)
 	const pinch = new Hammer.Pinch()
 	manager.add(pinch)
-	manager.on('pinch', function(ev) {
+	manager.on('pinch', function(ev) 
+	{
 		if (!model) return
 		const curr = model.getAttribute('scale')
 		const scale = (ev.scale - 1)*0.01
@@ -34,9 +35,10 @@
 			'z': curr.z + scale
 		})
 	})
-	const movingTouch = event => {
+	const movingTouch = event => 
+	{
 		if (!model) return
-		const curr = model.getAttribute('rotation')
+		/*const curr = model.getAttribute('rotation')
 		let touches = event.changedTouches
 		for (touch of touches) {
 			model.setAttribute('rotation', {
@@ -44,7 +46,25 @@
 				'y': curr.y + touch.pageX*0.01,
 				'z': curr.z
 			})
-		}
+		}*/
+		let rotation = model.getAttribute("rotation")
+		switch(ev.direction) {
+		  case 2:
+            	    rotation.y = rotation.y + 4
+            	    break;
+          	  case 4:
+            	    rotation.y = rotation.y - 4
+            	    break;
+          	  case 8:
+            	    rotation.x = rotation.x + 4
+            	    break;
+          	  case 16:
+            	    rotation.x = rotation.x - 4
+            	    break;
+          	  default:
+            	    break;
+        }
+        model.setAttribute("rotation", rotation)
 	}
 </script>
 </html>
