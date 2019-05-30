@@ -35,7 +35,8 @@
 			'z': curr.z + scale
 		})
 	})
-	const movingTouch = event => 
+	//const movingTouch = event => .
+	manager.on('pan', (ev) => {
 	{
 		if (!model) return
 		/*const curr = model.getAttribute('rotation')
