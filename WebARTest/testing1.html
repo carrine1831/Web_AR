@@ -54,16 +54,16 @@
 		let rotation = model.getAttribute('rotation')
 		//2 - left, 4 - right, 8 - up, 16 - down
 		switch(event.direction) {
-		  case 2:
+		  case DIRECTION_LEFT:
             	    rotation.y = rotation.y + 4
             	    break;
-          	  case 4:
+          	  case DIRECTION_RIGHT:
             	    rotation.y = rotation.y - 4
             	    break;
-          	  case 8:
+          	  case DIRECTION_UP:
             	    rotation.x = rotation.x + 4
             	    break;
-          	  case 16:
+          	  case DIRECTION_DOWN:
             	    rotation.x = rotation.x - 4
             	    break;
           	  default:
