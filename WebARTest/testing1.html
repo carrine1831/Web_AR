@@ -27,24 +27,19 @@
 	manager.on('pinch', function(ev) 
 	{
 		if (!model) return
-		/*const curr = model.getAttribute('scale')
+		const curr = model.getAttribute('scale')
 		const scale = (ev.scale - 1)*0.01
 		model.setAttribute('scale', {
 			'x': curr.x + scale,
 			'y': curr.y + scale,
 			'z': curr.z + scale
-		})*/
-		
-		let scale = {x:ev.scale, y:ev.scale, z:ev.scale}
-        	model.setAttribute("scale", scale);
-		
-		
+		})
 	});
-	//const movingTouch = event => 
-	manager.on('pan', function(event)
+	/*const movingTouch = event => 
+	//manager.on('pan', function(event)
 	{
 		if (!model) return
-		/*const curr = model.getAttribute('rotation')
+		const curr = model.getAttribute('rotation')
 		let touches = event.changedTouches
 		for (touch of touches) {
 			model.setAttribute('rotation', {
@@ -53,8 +48,8 @@
 				'z': curr.z
 			})
 		}
-	}*/
-		let rotation = model.getAttribute('rotation')
+	}
+		/*let rotation = model.getAttribute('rotation')
 		//2 - left, 4 - right, 8 - up, 16 - down
 		switch(event.direction) {
 		  case DIRECTION_LEFT:
@@ -73,6 +68,6 @@
             	    break;
 		}
         model.setAttribute('rotation', rotation)
-	});
+	});*/
 </script>
 </html>
