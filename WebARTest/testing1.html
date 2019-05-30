@@ -30,7 +30,7 @@
 		const curr = model.getAttribute('scale')
 		const scale = (ev.scale - 1)*0.01
 		model.setAttribute('scale', {
-			if (curr.x > 0.01 && curr.y > 0.01 && curr.z > 0.01)
+			if (scale > 0.01)
 			{
 			  'x': curr.x + scale,
 			  'y': curr.y + scale,
