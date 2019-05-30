@@ -36,7 +36,8 @@
 		})
 	});
 	//const movingTouch = event => .
-	manager.on('pan', (ev) => {
+	manager.on('pan', function(ev)
+	{
 		if (!model) return
 		/*const curr = model.getAttribute('rotation')
 		let touches = event.changedTouches
@@ -47,7 +48,7 @@
 				'z': curr.z
 			})
 		}*/
-		let rotation = model.getAttribute("rotation")
+		let rotation = model.getAttribute('rotation')
 		switch(ev.direction) {
 		  case 2:
             	    rotation.y = rotation.y + 4
@@ -64,7 +65,7 @@
           	  default:
             	    break;
 		}
-        model.setAttribute("rotation", rotation)
+        model.setAttribute('rotation', rotation)
 	});
 </script>
 </html>
