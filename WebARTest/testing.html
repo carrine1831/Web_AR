@@ -1,13 +1,51 @@
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar-2.js"></script>
 
 <body style='margin : 0px; overflow: hidden;'>
+  <script>
+    AFRAME.registerComponent("foo",{
+    init:function() {
+      var element = document.querySelector('body');
+      this.marker = document.querySelector('a-marker')
+      var model = document.querySelector('a-collada-model');
+      var hammertime = new Hammer(element);
+      var pinch = new Hammer.Pinch(); // Pinch is not by default in the recognisers
+      hammertime.add(pinch); // add it to the Manager instance
+
+      hammertime.on('pan', (ev) => {
+        let rotation = model.getAttribute("rotation")
+        switch(ev.direction) {
+          case 2:
+            rotation.y = rotation.y + 4
+            break;
+          case 4:
+            rotation.y = rotation.y - 4
+            break;
+          case 8:
+            rotation.x = rotation.x + 4
+            break;
+          case 16:
+            rotation.x = rotation.x - 4
+            break;
+          default:
+            break;
+        }
+        model.setAttribute("rotation", rotation)
+      });
+
+     hammertime.on("pinch", (ev) => {
+        let scale = {x:ev.scale, y:ev.scale, z:ev.scale}
+        model.setAttribute("scale", scale);
+    });
+  }
+});
+  </script>
   <a-scene embedded arjs='sourceType: webcam;'>
       <a-marker preset='hiro'>
         <a-entity
 
-        obj-model="obj: url(building_04.obj);
-        mtl: url(building_04.mtl)" scale="0.5,0.5,0.5">
+        obj-model="obj: url(lowpolymountains.obj);
+        mtl: url(lowpolymountains.mtl)" scale="0.5,0.5,0.5">
 
        </a-entity>
       </a-marker>
