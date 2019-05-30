@@ -30,18 +30,21 @@
 		const curr = model.getAttribute('scale')
 		const scale = (ev.scale - 1)*0.01
 		model.setAttribute('scale', {
-			'x': curr.x + scale,
-			'y': curr.y + scale,
-			'z': curr.z + scale
+			if(curr.x > 0.01 && curr.y > 0.01 && curr.z > 0.01)
+			{
+			  'x': curr.x + scale,
+			  'y': curr.y + scale,
+			  'z': curr.z + scale
+			}
 		})
 		
 		
 	});
-	const movingTouch = event =>
-	//manager.on('pan', function(ev)
+	//const movingTouch = event =>
+	manager.on('pan', function(ev)
 	{
 		if (!model) return
-		const curr = model.getAttribute('rotation')
+		/*const curr = model.getAttribute('rotation')
 		let touches = event.changedTouches
 		for (touch of touches) {
 			model.setAttribute('rotation', {
@@ -50,7 +53,8 @@
 				'z': curr.z
 			})
 		}
-		/*let rotation = model.getAttribute('rotation')
+	}*/
+		let rotation = model.getAttribute('rotation')
 		switch(ev.direction) {
 		  case 2:
             	    rotation.y = rotation.y + 4
@@ -68,6 +72,6 @@
             	    break;
 		}
         model.setAttribute('rotation', rotation)
-	});*/
+	});
 </script>
 </html>
